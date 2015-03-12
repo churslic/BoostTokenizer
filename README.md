@@ -25,7 +25,7 @@ Notice how the `'` `,`and the `.` were ignored.
  tokenizer library:
 
 ```
- #Include <boost/tokenizer.hpp>
+ #include <boost/tokenizer.hpp>
  using namespace boost;
 ```
 Of course, this is assuming you have boost downloaded onto your computer.
@@ -53,7 +53,7 @@ using namespace boost;
 
 Once compiled we will get the output that was shown above where the `'`
 `,` and the `.` were ignored.
-In this example, in order to call the tokenizer, we declare `tokenizer<>
+In this example, in order to call the tokenizer we declare `tokenizer<>
 mytok(str)`, where `str` is the parameter that you want to parse, and
 `mytok` is the name of your tokenizer.
 And don't worry about what goes in <>, we'll get to that later.
@@ -109,8 +109,8 @@ is known as the ***delimiter.***
 
 ##So what's a **delimiter** and why is it useful?
 A delimiter is a set of one or more characters that separate text.
-We can specify what our delimiter is for the tokenizing function so that
-we can control how our string will get parsed.
+We can specify what our delimiter will contain for the tokenizing function
+so that we can control how our string will get parsed.
 
 So here's another example we can work with:
 
@@ -119,7 +119,7 @@ string str = "CS&&&&100&is&really        amazing.";
 ```
 
 This is where we'll have to declare our tokenizer a little differently.
-The tokenizer will need to know that we want to use our own delimiter so we
+The tokenizer will need to know that we want to use our own delimiter, so we
 pass in `char_separator<char>` like this:
 
 ```
@@ -131,14 +131,14 @@ declaring variables easier.  It's just a way to give a data type a new name.
 Check out the [wiki page](http://en.wikipedia.org/wiki/Typedef) for
 `typedef` if you want to know more.)
 
-And so to actually specify what our delimiter will be, we do:
+Next, to actually specify what our delimiter will contain, we do:
 ```
 char_separator<char> delim("&");
 ```
-where `delim` is the name of our delimiter and for this particular example,
+where `delim` is the name of our delimiter and, for this particular example,
 `&` is the thing we will ignore.
 
-The tokenizer will also now require an extra parameter so that it knows what
+The tokenizer will now require an extra parameter so that it knows what
 the delimiter is.  If this extra parameter is not passed in, then the
 tokenizer will default to just ignoring *only* white space.  It will also
 treat non-letter/number characters as separate tokens.
@@ -192,14 +192,15 @@ Recall that our delimiter was:
 char_separator<char> delim("&");
 ```
 
-We can actually put multiple characters into our delimiter.
-So to get rid of spaces we would write:
+As we've mentioned before, the delimiter is a set of one or more characters.
+So we can actually write more things into our delimiter and thus get rid
+of spaces:
 
 ```
 char_separator<char> delim(" &");
 ```
 
-And so our output would look like:
+And so our output will look like:
 
 ```
 token: CS
@@ -214,9 +215,11 @@ Remember, this is not ignoring ***all*** white space, so you'll have to
 type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
 
 So now we know that the delimiter can have multiple characters, but what
-about repeated characters? Turns out that it won't make a difference.
-So try `char_separator<char> delim(" &&&");` on your own if you don't
-believe us.
+about repeated characters? Remember again that we're working with a
+[set](en.wikipedia.org/wiki/Set_(abstract_data_type)), so repeated
+characters don't get counted. So something like
+`char_separator<char> delim(" &&&");` won't make a difference.  Try it on
+your own if you don't believe us.
 
 ##Why is this better than strtok?
 If you haven't already looked, check out the
