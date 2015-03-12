@@ -138,10 +138,12 @@ char_separator<char> delim("&");
 where `delim` is the name of our delimiter and for this particular example,
 `&` is the thing we will ignore.
 
-The tokenizer will now require an extra parameter so that it knows what
-the delimiter is.  If this extra parameter is not passed in, then the
+The tokenizer will now require an extra parameter so that it knows which
+delimiter we're using.  If this extra parameter is not passed in, then the
 tokenizer will default to just ignoring *only* white space.  It will also
-treat non-letter/number characters as separate tokens.
+treat non-letter/number characters as separate tokens. This is something
+you can test on your own, because it's not exactly useful to have strings
+parsed like this.
 
 So using the `typedef` from earlier, our declaration will look like
 ```
@@ -211,8 +213,10 @@ token: amazing.
 ```
 
 Now we're finally looking at something useful.
-Remember, this is not ignoring ***all*** white space, so you'll have to
-type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
+However, keep in mind that this is not ignoring ***all*** white space,
+so you'll have to type in the
+[ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/)
+for other types of white space.
 
 But here's a question, what if our delimiter has repeated characters?
 Remember again that we're working with a set, so characters don't get
@@ -253,5 +257,7 @@ tokenizer<> mytok1(str);
 char_separator<char> delim(" &|<>;#");
 tokenizer< char_separator<char> > mytok2(str, delim);
 ```
-
-FIX ME: add summary?
+ - The default tokenizer, `tokenizer<> mytok`, ignores white space and all
+   non-letter/number characters.
+ - To be able to make your own tokenizer, you will need:
+    - Your own delimiter, `char_separator<char>`
