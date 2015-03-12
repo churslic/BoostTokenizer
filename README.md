@@ -58,17 +58,16 @@ mytok(str)`, where `str` is the parameter that you want to parse, and
 `mytok` is the name of your tokenizer.
 And don't worry about what goes in <>, we'll get to that later.
 
-    > Note: When compiling, you'll want to compile with `g++ -std=c++11`
-      since we're using the `auto` feature that is included in the c++11
-      standard.
-      `auto`will automatically decide what data type your variable should
-      be and since we have `auto it = tok.begin()`, `it` will become an
-      iterator since `tok.begin() `returns an iterator.
-      If your compiler doesn't handle c++11 then you would have to
-      replace `auto` with `tokenizer<>::iterator it`.
-      Typing that all out kind of sucks, so I suggest using `auto` because
-      it's pretty useful.
-      Don't worry, if you're using the cs100 server, c++11 should work.
+***Note***: When compiling, you'll want to compile with `g++ -std=c++11`
+since we're using the `auto` feature that is included in the c++11 standard.
+`auto`will automatically decide what data type your variable should be and
+since we have `auto it = tok.begin()`, `it` will become an iterator since
+`tok.begin() `returns an iterator.
+If your compiler doesn't handle c++11 then you would have to replace
+`auto` with `tokenizer<>::iterator it`.
+Typing that all out kind of sucks, so I suggest using `auto` because it's
+pretty useful.
+Don't worry, if you're using the cs100 server, c++11 should work.
 
 So here's another example of tokenizer to really drive it home:
 
@@ -95,16 +94,23 @@ So here's another example of tokenizer to really drive it home:
 	}
 ```
 
-The ***twooutput*** for this will be:
+***Output***:
 
 ```
 I m getting pretty good at this
 ```
 
-You should have a feel for how the boost tokenizer works by now, but this doesn't seem very useful since it's parsing your string like this.  By default, the tokenizer will ignore white space and non-letter/number characters.  But we can control what the tokenizer ignores by defining something which is known as the ***delimiter.***
+You should have a feel for how the boost tokenizer works by now, but this
+doesn't seem very useful since it's parsing your string like this.
+By default, the tokenizer will ignore white space and non-letter/number
+characters.
+But we can control what the tokenizer ignores by defining something which
+is known as the ***delimiter.***
 
 ##So what's a **delimiter** and why is it useful?
-A delimiter is a set of one or more characters that separate text.  We can specify what our delimiter is for the tokenizing function so that we can control how our string will get parsed.
+A delimiter is a set of one or more characters that separate text.
+We can specify what our delimiter is for the tokenizing function so that
+we can control how our string will get parsed.
 
 So here's another example we can work with:
 
@@ -112,28 +118,35 @@ So here's another example we can work with:
 string str = "CS&&&&100&is&really        amazing.";
 ```
 
-This is where we'll have to declare our tokenizer a little differently.  The tokenizer will need to know that we want to use our own delimiter so this is where the `<>` comes in:
+This is where we'll have to declare our tokenizer a little differently.
+The tokenizer will need to know that we want to use our own delimiter so we
+pass in `char_separator<char>` like this:
 
 ```
 typedef tokenizer< char_separator<char> > tok;
 ```
 
-***Note:*** `typedef` is another useful tool that we can use to make declaring variables easier.  It's just a way to give a data type a new name.  Check out the [wiki page](http://en.wikipedia.org/wiki/Typedef) for `typedef` if you want to know more.
+***Note:*** `typedef` is another useful tool that we can use to make
+declaring variables easier.  It's just a way to give a data type a new name.
+Check out the [wiki page](http://en.wikipedia.org/wiki/Typedef) for
+`typedef` if you want to know more.
 
-So notice how we put `char_separator<char>` So now that we have our `tok` data type declared, we need to make our delimiter.
-The delimiter is that  new thing we put into our tokenizer: `char_separator<char>`.  So we declare this and give it a name:
-
+And so to actually specify what our delimiter will be, we do:
 ```
 char_separator<char> delim("&");
 ```
+where `delim` is the name of our delimiter, and for this particular example,
+`&` is the thing we will ignore.
 
-Now, we can make our own tokenizer function.  However, making our own delimiter will require an extra parameter for our tokenizer function:
+The tokenizer will also now require an extra parameter so that it knows what
+characters to ignore.  If this extra parameter is not passed in, then the
+tokenizer will default to just ignoring *only* white space.  It will also
+treat non-letter/number characters as separate tokens.
 
-```
-tok mytok(str, delim);
-```
-
-where `mytok`is the name of our tokenizer, `str` is the thing we want to parse, and `delim` contains the stuff we want to ignore when parsing.
+So using the `typedef` from earlier, our declaration will look like
+`tok mytok(str, delim);` where `mytok` is the name of our tokenizer,
+`str` is the thing we want to parse, and `delim` is the name of our
+`char_separator<char>`.
 
 So let's see how this would work in code:
 
