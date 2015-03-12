@@ -21,13 +21,16 @@ Notice how the `'` `,`and the `.` were ignored.
 
 ##So how do we do this?
 
- First, in order to use the tokenizer we'll have to include the boost tokenizer library:
+ First, in order to use the tokenizer we'll have to include the boost
+ tokenizer library:
 
 ```
  #Include <boost/tokenizer.hpp>
  using namespace boost;
 ```
-Of course, this is assuming you have boost downloaded onto your computer.  If you're using the hammer.cs.ucr.edu server it's already there, but otherwise check out [boost.org's getting started guide](http://www.boost.org/doc/libs/1_57_0/more/getting_started/unix-variants.html).
+Of course, this is assuming you have boost downloaded onto your computer.
+If you're using the hammer.cs.ucr.edu server it's already there,
+but otherwise check out [boost.org's getting started guide](http://www.boost.org/doc/libs/1_57_0/more/getting_started/unix-variants.html).
 
 So now that we have what we need, let's start coding.
 
@@ -48,15 +51,24 @@ using namespace boost;
 }
 ```
 
-Once compiled we will get the output that was shown above where the `'` `,` and the `.` were ignored.
-In this example, in order to call the tokenizer, we declare `tokenizer<> mytok(str)`, where `str` is the parameter that you want to parse, and `mytok` is the name of your tokenizer.
+Once compiled we will get the output that was shown above where the `'`
+`,` and the `.` were ignored.
+In this example, in order to call the tokenizer, we declare `tokenizer<>
+mytok(str)`, where `str` is the parameter that you want to parse, and
+`mytok` is the name of your tokenizer.
 And don't worry about what goes in <>, we'll get to that later.
 
-Note: When compiling, you'll want to compile with `g++ -std=c++11` since we're using the `auto` feature that is included in the c++11 standard.
-`auto`will automatically decide what data type your variable should be and since we have `auto it = tok.begin()`, `it` will become an iterator since `tok.begin() `returns an iterator.
-If your compiler doesn't handle c++11 then you would have to replace `auto` with `tokenizer<>::iterator it`.
-Typing that all out kind of sucks, so I suggest using `auto` because it's pretty useful.
-Don't worry, if you're using the cs100 server, c++11 should work.
+    > Note: When compiling, you'll want to compile with `g++ -std=c++11`
+    > since we're using the `auto` feature that is included in the c++11
+    > standard.
+    > `auto`will automatically decide what data type your variable should
+    > be and since we have `auto it = tok.begin()`, `it` will become an
+    > iterator since `tok.begin() `returns an iterator.
+    > If your compiler doesn't handle c++11 then you would have to
+    > replace `auto` with `tokenizer<>::iterator it`.
+    > Typing that all out kind of sucks, so I suggest using `auto` because
+    > it's pretty useful.
+    > Don't worry, if you're using the cs100 server, c++11 should work.
 
 So here's another example of tokenizer to really drive it home:
 
