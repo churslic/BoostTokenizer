@@ -135,7 +135,7 @@ Next, to actually specify what our delimiter will contain, we do:
 ```
 char_separator<char> delim("&");
 ```
-where `delim` is the name of our delimiter and, for this particular example,
+where `delim` is the name of our delimiter and for this particular example,
 `&` is the thing we will ignore.
 
 The tokenizer will now require an extra parameter so that it knows what
@@ -215,11 +215,11 @@ Remember, this is not ignoring ***all*** white space, so you'll have to
 type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
 
 So now we know that the delimiter can have multiple characters, but what
-about repeated characters? Remember again that we're working with a
-[set](en.wikipedia.org/wiki/Set_(abstract_data_type)), so repeated
-characters don't get counted. So something like
-`char_separator<char> delim(" &&&");` won't make a difference.  Try it on
-your own if you don't believe us.
+about repeated characters? Remember again that we're working with a set,
+so repeated characters don't get counted.
+So something like `char_separator<char> delim(" &&&");` won't make a
+difference.
+Try it on your own if you don't believe us.
 
 ##Why is this better than strtok?
 If you haven't already looked, check out the
