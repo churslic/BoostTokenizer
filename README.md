@@ -214,14 +214,14 @@ Now we're finally looking at something useful.
 Remember, this is not ignoring ***all*** white space, so you'll have to
 type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
 
-So now we know that the delimiter can have multiple characters, but what
-about repeated characters? Remember again that we're working with a set,
-so repeated characters don't get counted.
+But here's a question, what if our delimiter has repeated characters?
+Remember again that we're working with a set, so characters don't get
+counted twice.
 So something like `char_separator<char> delim(" &&&");` won't make a
 difference.
 Try it on your own if you don't believe us.
 
-##Why is this better than strtok?
+##Why we recommend boost over strtok
 If you haven't already looked, check out the
 [strtok tutorial](https://github.com/mikeizbicki/ucr-cs100/tree/2015winter/textbook/assignment-help/strtok) so that you can get a better understanding
 of it.
@@ -229,12 +229,29 @@ As with everything, there are always its pros and its cons and you'll
 find that `strtok` might not be as intuitive as the boost tokenizer.
 
 Looking at the `strtok`tutorial, we see that there's this whole issue with
-having to pass in `NULL` so as to continue parsing with the same string.
-However, with boost the entire string is already parsed and we use iterators
-to look through them.
+having to pass in `NULL` so as to continue parsing with the same string,
+and in order to keep going through an entire string you would have to keep
+calling the `strok` function.
 
-`strtok` also cannot move backwards while tokenizing.  Once `strtok` is
-called, the substring before the token is dropped and cannot be accessed
-any more unless you pass in the original string again.
+`strtok` also cannot move backwards while tokenizing.
+Once `strtok` is called, the previous token will be dropped and it
+cannot be accessed any more unless you pass in the original string again to
+get that token back.
+
+##Summary
+ - The setup for boost tokenizer:
+```
+#include <boost/tokenizer.hpp>
+using namespace boost;
+
+...
+
+//Where str is usually of string type
+tokenizer<> mytok1(str); //Where str is usually of string type
+
+//A tokenizer with a custom delimiter
+char_separator<char> delim(" &|<>;#");
+tokenizer< char_separator<char> > mytok2(str, delim);
+```
 
 FIX ME: add summary?
