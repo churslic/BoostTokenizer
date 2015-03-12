@@ -183,13 +183,17 @@ So let's see how this would work in code:
     token: really        amazing.
 ```
 
-Notice how even though there were multiple `&`'s, all of them were ignored.  But wait, this still isn't exactly what we wanted, because now it's not ignoring spaces.  Recall that our delimiter was:
+Notice how even though there were multiple `&`'s, all of them were ignored.
+But wait, this still isn't exactly what we wanted because now it's not
+ignoring spaces.
+Recall that our delimiter was:
 
 ```
 char_separator<char> delim("&");
 ```
 
-We can actually put multiple characters into our delimiter.  So to get rid of spaces we would write:
+We can actually put multiple characters into our delimiter.
+So to get rid of spaces we would write:
 
 ```
 char_separator<char> delim(" &");
@@ -205,15 +209,29 @@ token: really
 token: amazing.
 ```
 
-Now this is something useful.  Remember, this is not ignoring ***all*** white space, so you'll have to type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
+Now we're finally looking at something useful.
+Remember, this is not ignoring ***all*** white space, so you'll have to
+type in the [ASCII character codes](http://www.petefreitag.com/cheatsheets/ascii-codes/) for other types of white space.
 
-So now we know that the delimiter can have multiple characters, but what about repeated characters? Turns out that it won't make a difference. So try `char_separator<char> delim(" &&&");` on your own if you don't believe us.
+So now we know that the delimiter can have multiple characters, but what
+about repeated characters? Turns out that it won't make a difference.
+So try `char_separator<char> delim(" &&&");` on your own if you don't
+believe us.
 
 ##Why is this better than strtok?
-If you haven't already looked, check out the [strtok tutorial](https://github.com/mikeizbicki/ucr-cs100/tree/2015winter/textbook/assignment-help/strtok) so that you can get a better understanding of it.  As with everything, there are always its pros and its cons, and you'll find that `strtok` might not be as intuitive as the boost tokenizer.
+If you haven't already looked, check out the
+[strtok tutorial](https://github.com/mikeizbicki/ucr-cs100/tree/2015winter/textbook/assignment-help/strtok) so that you can get a better understanding
+of it.
+As with everything, there are always its pros and its cons and you'll
+find that `strtok` might not be as intuitive as the boost tokenizer.
 
-In `strtok`, we have to pass in two parameters and from the other tutorial, we see that there's this whole issue with having to pass in `NULL` so as to continue parsing with the same string. However, with boost the entire string is already parsed and we use iterators to look through them.
+Looking at the `strtok`tutorial, we see that there's this whole issue with
+having to pass in `NULL` so as to continue parsing with the same string.
+However, with boost the entire string is already parsed and we use iterators
+to look through them.
 
-`strtok` also cannot move backwards while tokenizing.  Once `strtok` is called, the substring before the token is dropped and cannot be accessed any more unless you pass in the original string again.
+`strtok` also cannot move backwards while tokenizing.  Once `strtok` is
+called, the substring before the token is dropped and cannot be accessed
+any more unless you pass in the original string again.
 
 FIX ME: add summary?
