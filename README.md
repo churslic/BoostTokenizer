@@ -59,16 +59,16 @@ mytok(str)`, where `str` is the parameter that you want to parse, and
 And don't worry about what goes in <>, we'll get to that later.
 
     > Note: When compiling, you'll want to compile with `g++ -std=c++11`
-    > since we're using the `auto` feature that is included in the c++11
-    > standard.
-    > `auto`will automatically decide what data type your variable should
-    > be and since we have `auto it = tok.begin()`, `it` will become an
-    > iterator since `tok.begin() `returns an iterator.
-    > If your compiler doesn't handle c++11 then you would have to
-    > replace `auto` with `tokenizer<>::iterator it`.
-    > Typing that all out kind of sucks, so I suggest using `auto` because
-    > it's pretty useful.
-    > Don't worry, if you're using the cs100 server, c++11 should work.
+      since we're using the `auto` feature that is included in the c++11
+      standard.
+      `auto`will automatically decide what data type your variable should
+      be and since we have `auto it = tok.begin()`, `it` will become an
+      iterator since `tok.begin() `returns an iterator.
+      If your compiler doesn't handle c++11 then you would have to
+      replace `auto` with `tokenizer<>::iterator it`.
+      Typing that all out kind of sucks, so I suggest using `auto` because
+      it's pretty useful.
+      Don't worry, if you're using the cs100 server, c++11 should work.
 
 So here's another example of tokenizer to really drive it home:
 
