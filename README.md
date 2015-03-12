@@ -58,7 +58,7 @@ mytok(str)`, where `str` is the parameter that you want to parse, and
 `mytok` is the name of your tokenizer.
 And don't worry about what goes in <>, we'll get to that later.
 
-***Note***: When compiling, you'll want to compile with `g++ -std=c++11`
+(***Note***: When compiling, you'll want to compile with `g++ -std=c++11`
 since we're using the `auto` feature that is included in the c++11 standard.
 `auto`will automatically decide what data type your variable should be and
 since we have `auto it = tok.begin()`, `it` will become an iterator since
@@ -67,7 +67,7 @@ If your compiler doesn't handle c++11 then you would have to replace
 `auto` with `tokenizer<>::iterator it`.
 Typing that all out kind of sucks, so I suggest using `auto` because it's
 pretty useful.
-Don't worry, if you're using the cs100 server, c++11 should work.
+Don't worry, if you're using the cs100 server, c++11 should work.)
 
 So here's another example of tokenizer to really drive it home:
 
@@ -126,10 +126,10 @@ pass in `char_separator<char>` like this:
 typedef tokenizer< char_separator<char> > tok;
 ```
 
-***Note:*** `typedef` is another useful tool that we can use to make
+(***Note:*** `typedef` is another useful tool that we can use to make
 declaring variables easier.  It's just a way to give a data type a new name.
 Check out the [wiki page](http://en.wikipedia.org/wiki/Typedef) for
-`typedef` if you want to know more.
+`typedef` if you want to know more.)
 
 And so to actually specify what our delimiter will be, we do:
 ```
