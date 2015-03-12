@@ -135,16 +135,19 @@ And so to actually specify what our delimiter will be, we do:
 ```
 char_separator<char> delim("&");
 ```
-where `delim` is the name of our delimiter, and for this particular example,
+where `delim` is the name of our delimiter and for this particular example,
 `&` is the thing we will ignore.
 
 The tokenizer will also now require an extra parameter so that it knows what
-characters to ignore.  If this extra parameter is not passed in, then the
+the delimiter is.  If this extra parameter is not passed in, then the
 tokenizer will default to just ignoring *only* white space.  It will also
 treat non-letter/number characters as separate tokens.
 
 So using the `typedef` from earlier, our declaration will look like
-`tok mytok(str, delim);` where `mytok` is the name of our tokenizer,
+```
+tok mytok(str, delim);
+```
+ where `mytok` is the name of our tokenizer,
 `str` is the thing we want to parse, and `delim` is the name of our
 `char_separator<char>`.
 
