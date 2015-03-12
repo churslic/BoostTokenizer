@@ -247,7 +247,7 @@ using namespace boost;
 ...
 
 //Where str is usually of string type
-tokenizer<> mytok1(str); //Where str is usually of string type
+tokenizer<> mytok1(str);
 
 //A tokenizer with a custom delimiter
 char_separator<char> delim(" &|<>;#");
